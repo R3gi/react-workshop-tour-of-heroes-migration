@@ -22,7 +22,7 @@ h2 {
   align-items: flex-start;
 }
 
-a {
+.heroes-menu__link {
   background-color: #3f525c;
   border-radius: 2px;
   padding: 1rem;
@@ -43,12 +43,12 @@ a {
 }
 
 @media (min-width: 600px) {
-  a {
+  .heroes-menu__link {
     width: 18%;
     box-sizing: content-box;
   }
 }
 
-a:hover {
+.heroes-menu__link:hover {
   background-color: black;
 }
