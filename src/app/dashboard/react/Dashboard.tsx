@@ -6,7 +6,7 @@ export const Dashboard: FC<{ heroes$: Observable<Hero[]> }> = ({ heroes$ }) => {
   const [heroes, setHeroes] = useState<Hero[]>();
 
   useEffect(() => {
-    const subscription = heroes$.subscribe(heroes =>  setHeroes(heroes.slice(1, 5)));
+    const subscription = heroes$.subscribe(heroes =>  setHeroes(heroes.length > 5 ? heroes.slice(1, 5): heroes));
 
     return () => subscription.unsubscribe();
   }, []);

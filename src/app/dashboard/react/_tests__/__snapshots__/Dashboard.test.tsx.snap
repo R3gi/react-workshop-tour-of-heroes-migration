@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dashboard /> #render should render empty list 1`] = `
+<div>
+  <div>
+    <h2>
+      Top Heroes
+    </h2>
+    <div
+      class="heroes-menu"
+    />
+  </div>
+</div>
+`;
+
+exports[`<Dashboard /> #render should render heroes 1`] = `
+<div>
+  <div>
+    <h2>
+      Top Heroes
+    </h2>
+    <div
+      class="heroes-menu"
+    >
+      <a
+        class="heroes-menu__link"
+        href="/detail/1"
+      >
+        foo
+      </a>
+    </div>
+  </div>
+</div>
+`;
