@@ -45,8 +45,7 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true,
-              "aot": false
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -100,6 +99,6 @@
     }
   },
   "cli": {
-    "analytics": "be06d32c-f3ae-4537-9dd7-c5f5872f66d7"
+    "analytics": "b4a1c846-801a-41ca-802d-750a6cf99dca"
   }
 }

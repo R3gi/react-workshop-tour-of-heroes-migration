@@ -1,21 +1,17 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {RouterModule} from '@angular/router';
-import {Observable, of} from 'rxjs';
+import {of} from 'rxjs';
 
 import {HeroSearchComponent} from '../hero-search/hero-search.component';
 import {HeroService} from '../hero.service';
 import {HEROES} from '../mock-heroes';
 
 import {DashboardComponent} from './dashboard.component';
-import { ReactRootComponent } from '../react-root/react-root.component';
-import { Dashboard } from './react/Dashboard';
-import React from 'react';
-import { Hero } from '../hero';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
-  let heroService: { getHeroes: { (): Observable<Hero[]>; (): Observable<Hero[]>; and: any; }; };
+  let heroService;
   let getHeroesSpy: jasmine.Spy;
 
   beforeEach(waitForAsync(() => {
@@ -23,7 +19,7 @@ describe('DashboardComponent', () => {
     getHeroesSpy = heroService.getHeroes.and.returnValue(of(HEROES));
     TestBed
         .configureTestingModule({
-          declarations: [DashboardComponent, HeroSearchComponent, ReactRootComponent],
+          declarations: [DashboardComponent, HeroSearchComponent],
           imports: [RouterModule.forRoot([])],
           providers: [
             {provide: HeroService, useValue: heroService},
@@ -40,11 +36,15 @@ describe('DashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call renderComponent', () => {
-    expect(component.renderComponent()).toEqual(React.createElement(Dashboard, { heroes$: heroService.getHeroes() }));
+  it('should display "Top Heroes" as headline', () => {
+    expect(fixture.nativeElement.querySelector('h2').textContent).toEqual('Top Heroes');
   });
 
   it('should call heroService', waitForAsync(() => {
        expect(getHeroesSpy.calls.any()).toBe(true);
-  }));
+     }));
+
+  it('should display 4 links', waitForAsync(() => {
+       expect(fixture.nativeElement.querySelectorAll('a').length).toEqual(4);
+     }));
 });
